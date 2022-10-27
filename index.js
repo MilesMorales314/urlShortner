@@ -10,17 +10,6 @@ const loader = document.getElementById('loader')
 // const url = 'http://127.0.0.1:8000'
 const url = 'https://urlsrtnr.herokuapp.com'
 
-// displaythem();
-
-// if (chunk) {
-//     statusMessage.innerText = chunk.existing ? 'Linked Already Existed!!!' : 'Link Created Successfully.'
-//     shortLink.innerText = `${url}/${chunk.shortUrl}`
-// }
-// else {
-//     statusMessage.innerText = 'Please wait ...'
-//     shortLink.innerText = 'Loading ...'
-// }
-
 const displaythem = () => {
     displayELement.forEach((e) => {
         e.style.visibility = 'visible';
@@ -36,10 +25,18 @@ const hidethem = () => {
     response.style.marginBlock = '0rem';
 }
 
-// displaythem()
+const active = (tag) => {
+    tag.style.display = 'grid'
+}
+
+const inactive = (tag) => {
+    tag.style.display = 'none'
+}
 
 inputLink.addEventListener('input', () => {
     hidethem();
+    active(loader);
+    inactive(shortLink);
     shortLink.innerText = "";
     statusMessage.innerText = "";
 })
@@ -71,9 +68,10 @@ form.addEventListener('submit', async (event) => {
         const chunk = await res.json()
 
         if (chunk) {
+            inactive(loader)
+            active(shortLink)
             statusMessage.innerText = chunk.existing ? 'Linked Already Existed!!!' : 'Link Created Successfully.'
             shortLink.innerText = `${url}/${chunk.shortUrl}`
-            loader.style.display = 'none'
         }
     }
 

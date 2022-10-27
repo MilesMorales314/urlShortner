@@ -25,7 +25,7 @@ body {
     /* background-color: aqua; */
 }
 
-.logo > img {
+.logo>img {
     width: min(100%, 90vw);
 }
 
