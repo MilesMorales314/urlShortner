@@ -61,7 +61,8 @@
 }
 
 .loader2::before {
-    animation: rotate 2s ease-in-out infinite;
+    transform: rotate(45deg);
+    animation: rotate 3s ease-in-out infinite;
 }
 
 @keyframes rotate {
