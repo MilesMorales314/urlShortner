@@ -51,7 +51,7 @@
 }
 
 .loader1::before {
-    animation: rotate 1.5s linear infinite;
+    animation: rotate 3s ease-in-out infinite;
 }
 
 .loader2 {
@@ -61,7 +61,7 @@
 }
 
 .loader2::before {
-    animation: rotate 2s linear infinite;
+    animation: rotate 2s ease-in-out infinite;
 }
 
 @keyframes rotate {
@@ -70,13 +70,21 @@
         /* transform-origin: bottom center; */
     }
 
-    50% {
+    25% {
         transform: rotate(180deg);
+    }
+
+    50% {
+        transform: rotate(360deg);
         /* transform-origin: bottom center; */
     }
 
+    75% {
+        transform: rotate(540deg);
+    }
+
     100% {
-        transform: rotate(360deg);
+        transform: rotate(720deg);
         /* transform-origin: bottom center; */
     }
 }
