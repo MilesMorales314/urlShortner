@@ -1,12 +1,10 @@
-
-
 .loader-main {
-    --color: rgb(207, 241, 243);
-    --radius-1: 3rem;
+    --color: #fff;
+    --radius-1: 2rem;
     --radius-2: calc(var(--radius-1) - 1rem);
     background-color: var(--color);
-    height: 10rem;
-    width: 15rem;
+    height: max-content;
+    width: max-content;
     display: grid;
     place-items: center;
     z-index: 0;
@@ -71,10 +69,12 @@
         transform: rotate(0deg);
         /* transform-origin: bottom center; */
     }
+
     50% {
         transform: rotate(180deg);
         /* transform-origin: bottom center; */
     }
+
     100% {
         transform: rotate(360deg);
         /* transform-origin: bottom center; */
