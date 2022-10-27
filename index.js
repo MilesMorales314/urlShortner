@@ -5,6 +5,7 @@ const displayELement = document.querySelectorAll('.display');
 const shortLink = document.getElementById('shortLink')
 const statusMessage = document.getElementById('status')
 const response = document.getElementById('shortLink')
+const loader = document.getElementById('loader')
 
 // const url = 'http://127.0.0.1:8000'
 const url = 'https://urlsrtnr.herokuapp.com'
@@ -65,7 +66,6 @@ form.addEventListener('submit', async (event) => {
         }
 
         statusMessage.innerText = 'Please wait '
-        shortLink.innerText = 'Loading...'
 
         const res = await fetch(`${url}/link`, options)
         const chunk = await res.json()
@@ -73,6 +73,7 @@ form.addEventListener('submit', async (event) => {
         if (chunk) {
             statusMessage.innerText = chunk.existing ? 'Linked Already Existed!!!' : 'Link Created Successfully.'
             shortLink.innerText = `${url}/${chunk.shortUrl}`
+            loader.style.display = 'none'
         }
     }
 

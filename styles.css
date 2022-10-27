@@ -63,7 +63,7 @@ body {
     display: grid;
     place-items: center;
 
-    background-color: rgba(0, 137, 255, 0.12);
+    background-color: rgb(207, 241, 243);
 
     border-radius: 1.5rem;
 }
