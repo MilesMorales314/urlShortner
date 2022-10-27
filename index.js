@@ -4,28 +4,38 @@ const form = document.querySelector('#form')
 const displayELement = document.querySelectorAll('.display');
 const shortLink = document.getElementById('shortLink')
 const statusMessage = document.getElementById('status')
+const response = document.getElementById('shortLink')
 
 // const url = 'http://127.0.0.1:8000'
 const url = 'https://urlsrtnr.herokuapp.com'
 
-displaythem();
+// displaythem();
 
-if (chunk) {
-    statusMessage.innerText = chunk.existing ? 'Linked Already Existed!!!' : 'Link Created Successfully.'
-    shortLink.innerText = `${url}/${chunk.shortUrl}`
-}
+// if (chunk) {
+//     statusMessage.innerText = chunk.existing ? 'Linked Already Existed!!!' : 'Link Created Successfully.'
+//     shortLink.innerText = `${url}/${chunk.shortUrl}`
+// }
+// else {
+//     statusMessage.innerText = 'Please wait ...'
+//     shortLink.innerText = 'Loading ...'
+// }
 
-else {
-    statusMessage.innerText = 'Please wait ...'
-    shortLink.innerText = 'Loading ...'
+const displaythem = () => {
+    displayELement.forEach((e) => {
+        e.style.visibility = 'visible';
+    })
+
+    response.style.marginBlock = '1rem';
 }
 
 const hidethem = () => {
     displayELement.forEach((e) => {
         e.style.visibility = 'hidden';
     })
-
+    response.style.marginBlock = '0rem';
 }
+
+// displaythem()
 
 inputLink.addEventListener('input', () => {
     hidethem();
@@ -43,6 +53,7 @@ postLink.addEventListener('click', () => {
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault()
+    displaythem();
     if (inputLink.value) {
         const data = { link: inputLink.value }
         const options = {
@@ -53,11 +64,13 @@ form.addEventListener('submit', async (event) => {
             body: JSON.stringify(data),
         }
 
+        statusMessage.innerText = 'Please wait '
+        shortLink.innerText = 'Loading...'
+
         const res = await fetch(`${url}/link`, options)
         const chunk = await res.json()
 
         if (chunk) {
-            displaythem();
             statusMessage.innerText = chunk.existing ? 'Linked Already Existed!!!' : 'Link Created Successfully.'
             shortLink.innerText = `${url}/${chunk.shortUrl}`
         }
