@@ -8,7 +8,7 @@ const response = document.getElementById('shortLink')
 const loader = document.getElementById('loader')
 
 // const url = 'http://127.0.0.1:8000'
-const url = 'https://urlsrtnr.herokuapp.com'
+const url = 'https://urlsrtnr.onrender.com/'
 
 const displaythem = () => {
     displayELement.forEach((e) => {
